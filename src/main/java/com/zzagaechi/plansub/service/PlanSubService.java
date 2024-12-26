@@ -17,7 +17,7 @@ public class PlanSubService {
     private final UserRepo userRepository;
 
     @Transactional
-    public void createPlanSub(CreateEndDateWithEndTimeDto dto, String userId) {
+    public int createPlanSub(CreateEndDateWithEndTimeDto dto, String userId) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
@@ -30,10 +30,11 @@ public class PlanSubService {
                 .isCompleted(false)
                 .build();
         planSubRepository.save(planSub);
+        return planSub.getId();
     }
 
     @Transactional
-    public void createPlanSub(CreateEndDateDto dto, String userId) {
+    public int createPlanSub(CreateEndDateDto dto, String userId) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
@@ -45,10 +46,11 @@ public class PlanSubService {
                 .isCompleted(false)
                 .build();
         planSubRepository.save(planSub);
+        return planSub.getId();
     }
 
     @Transactional
-    public void createPlanSub(CreateEndTimeDto dto, String userId) {
+    public int createPlanSub(CreateEndTimeDto dto, String userId) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
@@ -60,10 +62,11 @@ public class PlanSubService {
                 .isCompleted(false)
                 .build();
         planSubRepository.save(planSub);
+        return planSub.getId();
     }
 
     @Transactional
-    public void createPlanSub(CreateNothingDto dto, String userId) {
+    public int createPlanSub(CreateNothingDto dto, String userId) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
@@ -74,5 +77,6 @@ public class PlanSubService {
                 .isCompleted(false)
                 .build();
         planSubRepository.save(planSub);
+        return planSub.getId();
     }
 }

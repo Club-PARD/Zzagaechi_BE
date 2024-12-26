@@ -22,7 +22,7 @@ public class PlanSub {
     @Schema(description = "세부 작업 ID")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     @Schema(description = "사용자 정보")
     @ManyToOne(fetch = FetchType.LAZY)

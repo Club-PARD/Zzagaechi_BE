@@ -31,7 +31,7 @@ public class PlanService {
                 .endDate(req.getEndDate())
                 .startTime(req.getStartTime())
                 .endTime(req.getEndTime())
-                .isCompleted(false)  // 새로 생성된 일정은 미완료 상태
+                .isCompleted(false)
                 .build();
                 
         planRepo.save(plan);
@@ -47,7 +47,7 @@ public class PlanService {
                 .title(req.getTitle())
                 .startDate(req.getStartDate())
                 .endDate(req.getEndDate())
-                .isCompleted(false)  // 새로 생성된 일정은 미완료 상태
+                .isCompleted(false)
                 .build();
                 
         planRepo.save(plan);
@@ -64,7 +64,7 @@ public class PlanService {
                 .startDate(req.getStartDate())
                 .startTime(req.getStartTime())
                 .endTime(req.getEndTime())
-                .isCompleted(false)  // 새로 생성된 일정은 미완료 상태
+                .isCompleted(false)
                 .build();
                 
         planRepo.save(plan);
@@ -79,10 +79,11 @@ public class PlanService {
                 .user(user)
                 .title(req.getTitle())
                 .startDate(req.getStartDate())
-                .isCompleted(false)  // 새로 생성된 일정은 미완료 상태
+                .isCompleted(false)
                 .build();
                 
         planRepo.save(plan);
     }
+
 
 }

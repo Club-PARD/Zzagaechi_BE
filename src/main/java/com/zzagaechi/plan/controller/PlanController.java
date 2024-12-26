@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@Tag(name = "Plan", description = "일정 API")
+@Tag(name = "세분화하지 않는 plan")
 @RestController
 @RequestMapping("/plan")
 @RequiredArgsConstructor
@@ -19,12 +19,9 @@ public class PlanController {
     
     @Operation(summary = "일정 생성 - 종료일O, 시작및종료시간O",
             description = "새로운 일정을 생성합니다. (종료일 O, 시작/종료시간 O) <br />"
-                    + "@param PlanCreateReq.CreateWithEndDateAndTimeDto - 일정명, 시작날짜, 종료날짜, 시작시간, 종료시간 <br />"
-                    + "@return 201 Created 상태코드와 생성된 일정의 ID <br />"
-                    + "@exception 입력값 유효성 검증 실패 시 400 Bad Request 반환")
+                    + "@param PlanCreateReq.CreateWithEndDateAndTimeDto - 일정명, 시작날짜, 종료날짜, 시작시간, 종료시간 <br />")
     @PostMapping("/{userId}/with-enddate-fulltime")
-    public ResponseEntity<Void> createWithEndDateFullTime(
-            @PathVariable String userId,
+    public ResponseEntity<Void> createWithEndDateFullTime(@PathVariable String userId,
             @Valid @RequestBody PlanCreateReq.CreateEndDateAndTimeDto req) {
         planService.createSchedule(req, userId);
         return ResponseEntity.status(201).build();
@@ -32,12 +29,9 @@ public class PlanController {
 
     @Operation(summary = "일정 생성 - 종료일O, 시작및종료시간X",
             description = "새로운 일정을 생성합니다. (종료일 O, 시작/종료시간 X) <br />"
-                    + "@param PlanCreateReq.CreateWithEndDateDto - 일정명, 시작날짜, 종료날짜 <br />"
-                    + "@return 201 Created 상태코드와 생성된 일정의 ID <br />"
-                    + "@exception 입력값 유효성 검증 실패 시 400 Bad Request 반환")
+                    + "@param PlanCreateReq.CreateWithEndDateDto - 일정명, 시작날짜, 종료날짜 <br />")
     @PostMapping("/{userId}/with-enddate")
-    public ResponseEntity<Void> createWithEndDate(
-            @PathVariable String userId,
+    public ResponseEntity<Void> createWithEndDate(@PathVariable String userId,
             @Valid @RequestBody PlanCreateReq.CreateEndDateDto req) {
         planService.createSchedule(req, userId);
         return ResponseEntity.status(201).build();
@@ -45,9 +39,7 @@ public class PlanController {
 
     @Operation(summary = "일정 생성 - 종료일X, 시작및종료시간O",
             description = "새로운 일정을 생성합니다. (종료일 X, 시작/종료시간 O) <br />"
-                    + "@param PlanCreateReq.CreateWithTimeDto - 일정명, 시작날짜, 시작시간, 종료시간 <br />"
-                    + "@return 201 Created 상태코드와 생성된 일정의 ID <br />"
-                    + "@exception 입력값 유효성 검증 실패 시 400 Bad Request 반환")
+                    + "@param PlanCreateReq.CreateWithTimeDto - 일정명, 시작날짜, 시작시간, 종료시간 <br />")
     @PostMapping("/{userId}/with-fulltime")
     public ResponseEntity<Void> createWithFullTime(
             @PathVariable String userId,
@@ -58,9 +50,7 @@ public class PlanController {
 
     @Operation(summary = "일정 생성 - 종료일X, 시작및종료시간X",
             description = "새로운 일정을 생성합니다. (종료일 X, 시작/종료시간 X) <br />"
-                    + "@param PlanCreateReq.CreateBasicDto - 일정명, 시작날짜 <br />"
-                    + "@return 201 Created 상태코드와 생성된 일정의 ID <br />"
-                    + "@exception 입력값 유효성 검증 실패 시 400 Bad Request 반환")
+                    + "@param PlanCreateReq.CreateBasicDto - 일정명, 시작날짜 <br />")
     @PostMapping("/{userId}/with-nothing")
     public ResponseEntity<Void> createWithNothing(
             @PathVariable String userId,

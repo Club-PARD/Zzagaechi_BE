@@ -2,6 +2,7 @@ package com.zzagaechi.auth.controller;
 
 import com.zzagaechi.auth.dto.LoginDto;
 import com.zzagaechi.auth.service.AuthService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * 
  */
+@Tag(name = "로그인!")
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor
