@@ -27,7 +27,6 @@ public class PlanSubService {
                 .startDate(dto.getStartDate())
                 .endDate(dto.getEndDate())
                 .endTime(dto.getEndTime())
-                .subtasks(dto.getSubtasks())
                 .isCompleted(false)
                 .build();
         planSubRepository.save(planSub);
@@ -43,7 +42,6 @@ public class PlanSubService {
                 .title(dto.getTitle())
                 .startDate(dto.getStartDate())
                 .endDate(dto.getEndDate())
-                .subtasks(dto.getSubtasks())
                 .isCompleted(false)
                 .build();
         planSubRepository.save(planSub);
@@ -59,14 +57,13 @@ public class PlanSubService {
                 .title(dto.getTitle())
                 .startDate(dto.getStartDate())
                 .endTime(dto.getEndTime())
-                .subtasks(dto.getSubtasks())
                 .isCompleted(false)
                 .build();
         planSubRepository.save(planSub);
     }
 
     @Transactional
-    public void createPlanSub(CreateDto dto, String userId) {
+    public void createPlanSub(CreateNothingDto dto, String userId) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
@@ -74,7 +71,6 @@ public class PlanSubService {
                 .user(user)
                 .title(dto.getTitle())
                 .startDate(dto.getStartDate())
-                .subtasks(dto.getSubtasks())
                 .isCompleted(false)
                 .build();
         planSubRepository.save(planSub);

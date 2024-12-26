@@ -1,7 +1,6 @@
 package com.zzagaechi.plansubdetail.service;
 
-import com.zzagaechi.plansubdetail.dto.request.PlanSubDetailCreateRequest.CreateRequest;
-import com.zzagaechi.plansubdetail.dto.request.PlanSubDetailCreateRequest.TodoDetailDto;
+import com.zzagaechi.plansubdetail.dto.request.PlanSubDetailCreateRequest;
 import com.zzagaechi.plansubdetail.entity.PlanSubDetail;
 import com.zzagaechi.plansubdetail.repository.PlanSubDetailRepository;
 import com.zzagaechi.plansub.entity.PlanSub;
@@ -22,31 +21,19 @@ public class PlanSubDetailService {
     private final PlanSubRepository planSubRepository;
 
     @Transactional
-    public void createDetails(CreateRequest request) {
+    public void createDetail(PlanSubDetailCreateRequest request) {
         PlanSub planSub = planSubRepository.findById(request.getPlanSubId())
                 .orElseThrow(() -> new RuntimeException("PlanSub not found"));
-        
-        List<String> subtasks = planSub.getSubtasks();
-        List<TodoDetailDto> todoDetails = request.getTodoDetails();
-        
-        if (subtasks.size() != todoDetails.size()) {
-            throw new RuntimeException("할일 목록의 개수와 시간 정보의 개수가 일치하지 않습니다.");
-        }
 
-        List<PlanSubDetail> details = new ArrayList<>();
-        for (int i = 0; i < subtasks.size(); i++) {
-            TodoDetailDto timeInfo = todoDetails.get(i);
-            PlanSubDetail detail = PlanSubDetail.builder()
-                    .planSub(planSub)
-                    .content(subtasks.get(i))
-                    .date(timeInfo.getDate())
-                    .startTime(timeInfo.getStartTime())
-                    .endTime(timeInfo.getEndTime())
-                    .isCompleted(false)
-                    .build();
-            details.add(detail);
-        }
-        
-        planSubDetailRepository.saveAll(details);
+        PlanSubDetail detail = PlanSubDetail.builder()
+                .planSub(planSub)
+                .content(request.getContent())
+                .date(request.getDate())
+                .startTime(request.getStartTime())
+                .endTime(request.getEndTime())
+                .isCompleted(false)
+                .build();
+
+        planSubDetailRepository.save(detail);
     }
 }

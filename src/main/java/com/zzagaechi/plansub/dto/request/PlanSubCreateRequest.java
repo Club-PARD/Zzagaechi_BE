@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.List;
 
 @Schema(description = "세부 작업 생성 요청")
 public class PlanSubCreateRequest {
@@ -31,9 +30,6 @@ public class PlanSubCreateRequest {
         @Schema(description = "종료시간", example = "17:30")
         @NotNull(message = "종료시간을 입력해야합니다")
         private LocalTime endTime;
-
-        @Schema(description = "세부 작업 목록", example = "[\"자료 조사하기\", \"회의록 작성\"]")
-        private List<String> subtasks;
     }
 
     @Getter
@@ -51,9 +47,6 @@ public class PlanSubCreateRequest {
         @Schema(description = "종료날짜", example = "2024-01-31")
         @NotNull(message = "종료날짜를 입력해야합니다")
         private LocalDate endDate;
-
-        @Schema(description = "세부 작업 목록", example = "[\"요구사항 분석\", \"설계\", \"개발\"]")
-        private List<String> subtasks;
     }
 
     @Getter
@@ -71,9 +64,6 @@ public class PlanSubCreateRequest {
         @Schema(description = "종료시간", example = "18:00")
         @NotNull(message = "종료시간을 입력해야합니다")
         private LocalTime endTime;
-
-        @Schema(description = "세부 작업 목록", example = "[\"이메일 확인\", \"보고서 작성\"]")
-        private List<String> subtasks;
     }
 
     @Getter
@@ -87,8 +77,5 @@ public class PlanSubCreateRequest {
         @Schema(description = "시작 날짜", example = "2024-01-01")
         @NotNull
         private LocalDate startDate;
-
-        @Schema(description = "세부 작업 목록", example = "[\"장보기\", \"청소하기\", \"빨래하기\"]")
-        private List<String> subtasks;
     }
 }
