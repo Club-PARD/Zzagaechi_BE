@@ -1,6 +1,5 @@
 package com.zzagaechi.plan.entity;
 
-import com.zzagaechi.user.entity.User;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.Builder;
@@ -9,23 +8,24 @@ import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import com.zzagaechi.user.entity.User;
 
 @Schema(description = "일정 엔티티 - 세분화 OFF")
 @Entity
-@Table(name = "plan")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Table(name = "plan")
 public class Plan {
 
     @Schema(description = "일정 ID", example = "1")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long scheduleId;
+    private int planId;
 
     @Schema(description = "사용자 정보")
-    @ManyToOne(fetch = FetchType.LAZY) //유저는 많은 일정을 가질 수 있음
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "uid", nullable = false)
     private User user;
 
@@ -33,21 +33,28 @@ public class Plan {
     @Column(nullable = false)
     private String title;
 
-    @Schema(description = "시작 날짜", example = "2024-01-01")
+    @Schema(description = "해야하는 날짜", example = "2024-01-01")
     @Column(nullable = false)
-    private LocalDate startDate;
-    //여기까진 필수
-
-    @Schema(description = "종료 날짜", example = "2024-01-03")
-    private LocalDate endDate;
-
+    private LocalDate doDate;
+    //여기까지 필수
     @Schema(description = "시작 시간 (종료 시간과 쌍으로 존재)", example = "09:00")
     private LocalTime startTime;
 
     @Schema(description = "종료 시간 (시작 시간과 쌍으로 존재)", example = "18:00")
     private LocalTime endTime;
-
+    //시작/종료는 선택
     @Schema(description = "완료 여부", example = "false")
-    @Column(nullable = false)
-    private Boolean isCompleted = false;
+    private boolean isCompleted = false;
+
+    public void toggleComplete() {
+        this.isCompleted = !this.isCompleted;
+    }//토글 변경 method
+
+    public void update(LocalDate doDate, LocalTime startTime, LocalTime endTime, String title) {
+        this.doDate = doDate;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.title = title;
+    }//update
+
 }

@@ -1,5 +1,6 @@
 package com.zzagaechi.plansub.entity;
 
+import com.zzagaechi.plansubdetail.entity.PlanSubDetail;
 import com.zzagaechi.user.entity.User;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
@@ -10,6 +11,8 @@ import lombok.AllArgsConstructor;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Schema(description = "세부 작업")
 @Entity
@@ -31,21 +34,23 @@ public class PlanSub {
 
     @Schema(description = "제목")
     @Column(nullable = false)
-    private String title;
+    private String plansubtitle;
 
     @Schema(description = "시작 날짜")
     @Column(nullable = false)
     private LocalDate startDate;
 
     @Schema(description = "종료 날짜")
-    @Column
+    @Column(nullable = false)
     private LocalDate endDate;
 
     @Schema(description = "종료 시간")
     @Column
-    private LocalTime endTime;
+    private LocalTime deadline;
 
     @Schema(description = "완료 여부")
-    @Column(nullable = false)
     private boolean isCompleted = false;
+
+    @OneToMany(mappedBy = "planSub", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<PlanSubDetail> planSubDetails = new ArrayList<>();
 }

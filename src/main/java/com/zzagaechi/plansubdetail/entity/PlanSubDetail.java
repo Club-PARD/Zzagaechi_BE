@@ -22,7 +22,7 @@ public class PlanSubDetail {
     @Schema(description = "세부 작업 상세 ID")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     @Schema(description = "세부 작업")
     @ManyToOne(fetch = FetchType.LAZY)
@@ -48,4 +48,17 @@ public class PlanSubDetail {
     @Schema(description = "완료 여부")
     @Column(nullable = false)
     private boolean isCompleted = false;
+
+    public void toggleComplete() {
+        this.isCompleted = !this.isCompleted;
+    }//토글 변경 method
+
+    public void update(String content, LocalDate date, LocalTime startTime, LocalTime endTime) {
+        this.content = content;
+        this.date = date;
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
+
+
 }

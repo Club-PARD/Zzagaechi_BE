@@ -8,7 +8,14 @@ import org.springframework.data.repository.query.Param;
 import java.time.LocalDate;
 import java.util.List;
 
-public interface PlanSubRepository extends JpaRepository<PlanSub, Long> {
-    
+public interface PlanSubRepository extends JpaRepository<PlanSub, Integer> {
+
+    List<PlanSub> findAllByUser_UidAndStartDateBetween(
+            String uid,
+            LocalDate startDate,
+            LocalDate endDate
+    );
+
+
 
 }

@@ -9,15 +9,16 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-@Schema(description = "세부 작업 생성 요청")
+
 public class PlanSubCreateRequest {
+
     @Getter
     @NoArgsConstructor
-    @Schema(description = "종료일O + 종료시간O")
-    public static class CreateEndDateWithEndTimeDto {
+    @Schema(description = "종료시간O")
+    public static class CreateTimeDto {
         @Schema(description = "제목", example = "프로젝트 개발")
         @NotBlank
-        private String title;
+        private String plansubtitle;
 
         @Schema(description = "시작 날짜", example = "2024-01-01")
         @NotNull
@@ -29,16 +30,17 @@ public class PlanSubCreateRequest {
 
         @Schema(description = "종료시간", example = "17:30")
         @NotNull(message = "종료시간을 입력해야합니다")
-        private LocalTime endTime;
+        private LocalTime deadline;
     }
+
 
     @Getter
     @NoArgsConstructor
-    @Schema(description = "종료일O + 종료시간X")
-    public static class CreateEndDateDto {
+    @Schema(description = "종료시간X")
+    public static class CreateDto {
         @Schema(description = "제목", example = "프로젝트 기간")
         @NotBlank
-        private String title;
+        private String plansubtitle;
 
         @Schema(description = "시작 날짜", example = "2024-01-01")
         @NotNull
@@ -49,33 +51,4 @@ public class PlanSubCreateRequest {
         private LocalDate endDate;
     }
 
-    @Getter
-    @NoArgsConstructor
-    @Schema(description = "종료일X + 종료시간O")
-    public static class CreateEndTimeDto {
-        @Schema(description = "제목", example = "일일 업무")
-        @NotBlank
-        private String title;
-
-        @Schema(description = "시작 날짜", example = "2024-01-01")
-        @NotNull
-        private LocalDate startDate;
-
-        @Schema(description = "종료시간", example = "18:00")
-        @NotNull(message = "종료시간을 입력해야합니다")
-        private LocalTime endTime;
-    }
-
-    @Getter
-    @NoArgsConstructor
-    @Schema(description = "종료일X + 종료시간X")
-    public static class CreateNothingDto {
-        @Schema(description = "제목", example = "할일 목록")
-        @NotBlank
-        private String title;
-
-        @Schema(description = "시작 날짜", example = "2024-01-01")
-        @NotNull
-        private LocalDate startDate;
-    }
 }

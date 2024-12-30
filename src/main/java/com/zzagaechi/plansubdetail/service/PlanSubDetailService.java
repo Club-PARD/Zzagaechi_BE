@@ -1,6 +1,9 @@
 package com.zzagaechi.plansubdetail.service;
 
-import com.zzagaechi.plansubdetail.dto.request.PlanSubDetailBulkCreateRequest;
+import com.zzagaechi.plansubdetail.dto.request.PlanSubDetailListeRequest;
+import com.zzagaechi.plansubdetail.dto.request.UpdateRequest;
+import com.zzagaechi.plansubdetail.dto.response.PlanSubDetailListResponse;
+import com.zzagaechi.plansubdetail.dto.response.PlanSubDetailsByPlanSubResponse;
 import com.zzagaechi.plansubdetail.entity.PlanSubDetail;
 import com.zzagaechi.plansubdetail.repository.PlanSubDetailRepository;
 import com.zzagaechi.plansub.entity.PlanSub;
@@ -11,7 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -21,8 +23,8 @@ public class PlanSubDetailService {
     private final PlanSubRepository planSubRepository;
 
     @Transactional
-    public void createDetails(PlanSubDetailBulkCreateRequest request) {
-        PlanSub planSub = planSubRepository.findById(request.getPlanSubId())
+    public void createDetails(int planSubId, PlanSubDetailListeRequest request) {
+        PlanSub planSub = planSubRepository.findById(planSubId)
                 .orElseThrow(() -> new RuntimeException("PlanSub not found"));
             
         List<PlanSubDetail> details = request.getDetails().stream()
@@ -34,9 +36,84 @@ public class PlanSubDetailService {
                         .endTime(detail.getEndTime())
                         .isCompleted(false)
                         .build())
-                .collect(Collectors.toList());
-            
+                        .toList();
         planSubDetailRepository.saveAll(details);
+    } //plansubdetail 저장
+
+
+    @Transactional(readOnly = true)//오늘 할일 리스트
+    public List<PlanSubDetailListResponse> getDetailsByDate(String userId, LocalDate date) {
+        return planSubDetailRepository.findAllByPlanSub_User_UidAndDateOrderByStartTimeAsc(userId, date)
+                .stream()
+                .map(PlanSubDetailListResponse::from)
+                .toList();
+    }
+
+
+    //삭제하기
+    @Transactional
+    public void deleteDetail(int id) {
+        PlanSubDetail detail = planSubDetailRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("PlanSubDetail not found with id: " + id));
+        planSubDetailRepository.delete(detail);
+    }
+
+
+    //토글 상태변경
+    @Transactional
+    public void toggleCompleteList(String userId, List<Integer> detailIds) {
+        if (detailIds == null || detailIds.isEmpty()) {
+            return;//아무것도 없으면 반환
+        }
+
+        detailIds.forEach(detailId -> {
+            PlanSubDetail detail = planSubDetailRepository.findById(detailId)
+                    .orElseThrow(() -> new IllegalArgumentException("PlanSubDetail not found with id: " + detailId));
+
+            // 권한 체크: 해당 유저의 세부일정인지 확인
+            if (!detail.getPlanSub().getUser().getUid().equals(userId)) {
+                throw new RuntimeException("Unauthorized access");
+            }
+
+            detail.toggleComplete();
+        });
+    }
+
+    @Transactional
+    public void updateDetail(String userId, int detailId, UpdateRequest request) {
+        PlanSubDetail detail = planSubDetailRepository.findById(detailId)
+                .orElseThrow(() -> new IllegalArgumentException("PlanSubDetail not found with id: " + detailId));
+
+        // 권한 체크
+        if (!detail.getPlanSub().getUser().getUid().equals(userId)) {
+            throw new RuntimeException("Unauthorized access");
+        }
+
+        detail.update(
+                request.getContent(),
+                request.getDate(),
+                request.getStartTime(),
+                request.getEndTime()
+        );
+    }
+
+    @Transactional(readOnly = true)
+    public PlanSubDetailsByPlanSubResponse getDetailsByDetailId(String userId, int detailId) {
+        // 요청된 PlanSubDetail 조회
+        PlanSubDetail detail = planSubDetailRepository.findById(detailId)
+                .orElseThrow(() -> new IllegalArgumentException("PlanSubDetail not found with id: " + detailId));
+
+        // 권한 체크
+        if (!detail.getPlanSub().getUser().getUid().equals(userId)) {
+            throw new RuntimeException("Unauthorized access");
+        }
+
+        // 같은 PlanSub를 가진 모든 PlanSubDetail 조회
+        PlanSub planSub = detail.getPlanSub();
+        List<PlanSubDetail> details = planSubDetailRepository
+                .findAllByPlanSubIdOrderByDateAscStartTimeAsc(planSub.getId());
+
+        return PlanSubDetailsByPlanSubResponse.of(planSub, details);
     }
 
 

@@ -1,59 +1,67 @@
 package com.zzagaechi.plansubdetail.controller;
 
-import com.zzagaechi.plansubdetail.dto.request.PlanSubDetailBulkCreateRequest;
+import com.zzagaechi.plansubdetail.dto.request.PlanSubDetailListeRequest;
+import com.zzagaechi.plansubdetail.dto.request.ToggleListRequest;
+import com.zzagaechi.plansubdetail.dto.request.UpdateRequest;
+import com.zzagaechi.plansubdetail.dto.response.PlanSubDetailsByPlanSubResponse;
 import com.zzagaechi.plansubdetail.service.PlanSubDetailService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.ExampleObject;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
 
-@Tag(name = "세부 작업의 상제정보 기입")
+@Tag(name = "세부 작업의 상제정보(ch1보기)")
 @RestController
-@RequestMapping("/api/plansubdetail")
+@RequestMapping("/plansubdetail")
 @RequiredArgsConstructor
 public class PlanSubDetailController {
     private final PlanSubDetailService planSubDetailService;
 
     @Operation(
             summary = "세부 작업 상세 일괄 생성",
-            description = """
-            여러 개의 세부 작업 상세를 한 번에 생성합니다.
-            
-            Example:
-            {
-              "planSubId": 3,
-              "details": [
-                {
-                  "content": "종이 구하기",
-                  "date": "2024-01-26",
-                  "startTime": "18:00",
-                  "endTime": "18:00"
-                },
-                {
-                  "content": "연필 구하기",
-                  "date": "2024-01-26",
-                  "startTime": "19:00",
-                  "endTime": "19:30"
-                },
-                {
-                  "content": "지우개 구하기",
-                  "date": "2024-01-26",
-                  "startTime": "20:00",
-                  "endTime": "20:30"
-                }
-              ]
-            }
-            """)
-    @PostMapping("/create")
-    public ResponseEntity<Void> createDetails(@Valid @RequestBody PlanSubDetailBulkCreateRequest request) {
-        planSubDetailService.createDetails(request);
+            description = "여러 개의 세부 작업 상세를 한 번에 생성합니다.")
+    @PostMapping("/{planSubId}")
+    public ResponseEntity<Void> createDetails(
+            @PathVariable int planSubId,
+            @Valid @org.springframework.web.bind.annotation.RequestBody PlanSubDetailListeRequest request) {
+        planSubDetailService.createDetails(planSubId, request);
         return ResponseEntity.status(201).build();
+    }
+
+    @Operation(summary = "세부 작업 상세 삭제")
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteDetail(@PathVariable int id) {
+        planSubDetailService.deleteDetail(id);
+        return ResponseEntity.ok().build();
+    }
+
+    @Operation(summary = "세부 작업 상세 완료 여부 일괄 토글")
+    @PatchMapping("/{userId}/toggle")
+    public ResponseEntity<Void> toggleCompleteList(
+            @PathVariable String userId,
+            @Valid @org.springframework.web.bind.annotation.RequestBody ToggleListRequest request) {
+        planSubDetailService.toggleCompleteList(userId, request.getDetailIds());
+        return ResponseEntity.ok().build();
+    }
+
+    @Operation(summary = "내용수정", description = "세부 작업내용을 수정합니다.")
+    @PatchMapping("/{userId}/{detailId}")
+    public ResponseEntity<Void> updateDetail(
+            @PathVariable String userId,
+            @PathVariable int detailId,
+            @org.springframework.web.bind.annotation.RequestBody UpdateRequest request) {
+        planSubDetailService.updateDetail(userId, detailId, request);
+        return ResponseEntity.ok().build();
+    }
+
+    @Operation(summary = "같은 PlanSub에 속한 세부 작업들 조회",
+            description = "주어진 세부 작업이 속한 PlanSub의 모든 세부 작업과 제목을 조회합니다.")
+    @GetMapping("/{userId}/{detailId}")
+    public ResponseEntity<PlanSubDetailsByPlanSubResponse> getDetailWithSiblings(
+            @PathVariable String userId,
+            @PathVariable int detailId) {
+        return ResponseEntity.ok(planSubDetailService.getDetailsByDetailId(userId, detailId));
     }
 }

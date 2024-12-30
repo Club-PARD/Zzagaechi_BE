@@ -15,24 +15,19 @@ import java.util.List;
 
 @Schema(description = "세부 작업 상세 일괄 생성 요청")
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
+@NoArgsConstructor @AllArgsConstructor
 @Builder
-public class PlanSubDetailBulkCreateRequest {
-    @Schema(description = "세부 작업 ID")
-    @NotNull
-    private Long planSubId;
-    
-    @Schema(description = "세부 작업 상세 목록")
+public class PlanSubDetailListeRequest {
+    @Schema(description = "세부 작업 상세 (내용+날짜+시작시간+종료시간)의 리스트")
     @NotEmpty
-    private List<DetailRequest> details;
-    
+    private List<DetailRequestDto> details;
+
+
     @Schema(description = "세부 작업 상세 정보")
     @Getter
-    @NoArgsConstructor
-    @AllArgsConstructor
+    @NoArgsConstructor  @AllArgsConstructor
     @Builder
-    public static class DetailRequest {
+    public static class DetailRequestDto {//리스트에 들어갈 내용  List<DetailRequestDto> 이렇게 받을거임
         @Schema(description = "세부 작업 내용", example = "종이 구하기")
         @NotBlank
         private String content;
@@ -49,4 +44,5 @@ public class PlanSubDetailBulkCreateRequest {
         @NotNull
         private LocalTime endTime;
     }
+
 }
