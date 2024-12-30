@@ -33,15 +33,17 @@ public class Plan {
     @Column(nullable = false)
     private String plantitle;
 
-    @Schema(description = "해야하는 날짜", example = "2024-01-01")
+    @Schema(description = "시작 날짜", example = "2024-01-01")
     @Column(nullable = false)
-    private LocalDate doDate;
-    //여기까지 필수
-    @Schema(description = "시작 시간 (종료 시간과 쌍으로 존재)", example = "09:00")
+    private LocalDate startDate;
+
+    @Schema(description = "종료 날짜", example = "2024-01-02")
+    @Column(nullable = false)
+    private LocalDate endDate;
+
+    @Schema(description = "시작 시간", example = "09:00")
     private LocalTime startTime;
 
-    @Schema(description = "종료 시간 (시작 시간과 쌍으로 존재)", example = "18:00")
-    private LocalTime endTime;
     //시작/종료는 선택
     @Schema(description = "완료 여부", example = "false")
     private boolean isCompleted = false;
@@ -50,10 +52,10 @@ public class Plan {
         this.isCompleted = !this.isCompleted;
     }//토글 변경 method
 
-    public void update(LocalDate doDate, LocalTime startTime, LocalTime endTime, String plantitle) {
-        this.doDate = doDate;
+    public void update(LocalDate startDate, LocalDate endDate, LocalTime startTime,  String plantitle) {
+        this.startDate = startDate;
+        this.endDate = endDate;
         this.startTime = startTime;
-        this.endTime = endTime;
         this.plantitle = plantitle;
     }//update
 

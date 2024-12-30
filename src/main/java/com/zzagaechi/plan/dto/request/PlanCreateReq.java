@@ -2,6 +2,7 @@ package com.zzagaechi.plan.dto.request;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import java.time.LocalDate;
@@ -19,17 +20,18 @@ public class PlanCreateReq {
         @NotBlank(message = "일정명은 필수입니다")
         private String plantitle;
 
-        @Schema(description = "해야하는 날짜", example = "2024-01-01")
-        @NotNull(message = "날짜는 필수입니다")
-        private LocalDate doDate;
+        @Schema(description = "시작 날짜", example = "2024-01-01")
+        @NotNull(message = "시작 날짜는 필수입니다")
+        private LocalDate startDate;
+
+        @Schema(description = "종료 날짜", example = "2024-01-02")
+        @NotNull(message = "종료 날짜는 필수입니다")
+        private LocalDate endDate;
 
         @Schema(description = "시작시간", example = "09:00")
         @NotNull(message = "시작 시간은 필수입니다")
         private LocalTime startTime;
-        
-        @Schema(description = "종료시간", example = "10:30")
-        @NotNull(message = "종료 시간은 필수입니다")
-        private LocalTime endTime;
+
     }
 
     @Getter
@@ -40,8 +42,12 @@ public class PlanCreateReq {
         @NotBlank(message = "일정명은 필수입니다")
         private String plantitle;
 
-        @Schema(description = "해야하는 날짜", example = "2024-01-01")
-        @NotNull(message = "날짜는 필수입니다")
-        private LocalDate doDate;
+        @Schema(description = "시작 날짜", example = "2024-01-01")
+        @NotNull(message = "시작 날짜는 필수입니다")
+        private LocalDate startDate;
+
+        @Schema(description = "종료 날짜", example = "2024-01-02")
+        @NotNull(message = "종료 날짜는 필수입니다")
+        private LocalDate endDate;
     }
 }

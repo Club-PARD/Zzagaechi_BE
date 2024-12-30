@@ -16,7 +16,7 @@ import java.time.YearMonth;
 
 @Tag(name = "월별 일정 조회", description = "캘린더")
 @RestController
-@RequestMapping("/calender")
+@RequestMapping("/calendar")
 @RequiredArgsConstructor
 public class CalendarController {
     private final CalendarService calendarService;

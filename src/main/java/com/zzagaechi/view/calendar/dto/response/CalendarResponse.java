@@ -22,8 +22,6 @@ public class CalendarResponse {
     @Schema(description = "세부 일정 목록")
     private List<CalendarPlanSubDto> planSubs;
 
-
-
     @Schema(description = "plan DTO")
     @Getter
     @Builder
@@ -34,19 +32,21 @@ public class CalendarResponse {
         @Schema(description = "일정 제목")
         private String plantitle;
 
-        @Schema(description = "날짜")
-        private LocalDate doDate;
+        @Schema(description = "시작날짜")
+        private LocalDate startDate;
+
+        @Schema(description = "종료날짜")
+        private LocalDate endDate;
 
         public static CalendarPlanDto from(Plan plan) {
             return CalendarPlanDto.builder()
                     .planId(plan.getPlanId())
                     .plantitle(plan.getPlantitle())
-                    .doDate(plan.getDoDate())
+                    .startDate(plan.getStartDate())
+                    .endDate(plan.getEndDate())
                     .build();
         }
     }
-
-
 
     @Schema(description = "plansub DTO")
     @Getter

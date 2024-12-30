@@ -9,8 +9,8 @@ import java.time.LocalTime;
 @Getter
 @NoArgsConstructor
 public class PlanUpdateRequest {
-    private LocalDate doDate;
+    private LocalDate startDate;
+    private LocalDate endDate;
     private LocalTime startTime;
-    private LocalTime endTime;
     private String title;
 }
