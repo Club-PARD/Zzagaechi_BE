@@ -10,7 +10,7 @@ import java.time.LocalTime;
 @Builder
 public class PlanSubDetailListResponse {//오늘할일의 세분화목록 보내주도록 하는 dto
     private int detailId;
-    private String title;
+    private String plansubtitle;
     private String content;
     private LocalTime startTime;
     private LocalTime endTime;
@@ -21,7 +21,7 @@ public class PlanSubDetailListResponse {//오늘할일의 세분화목록 보내
     public static PlanSubDetailListResponse from(PlanSubDetail detail) {
         return PlanSubDetailListResponse.builder()
                 .detailId(detail.getId())
-                .title(detail.getPlanSub().getPlansubtitle()) //plansub의 title
+                .plansubtitle(detail.getPlanSub().getPlansubtitle()) //plansub의 title
                 .content(detail.getContent())
                 .startTime(detail.getStartTime())
                 .endTime(detail.getEndTime())

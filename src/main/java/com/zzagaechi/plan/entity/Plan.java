@@ -31,7 +31,7 @@ public class Plan {
 
     @Schema(description = "일정 제목", example = "프로젝트 회의")
     @Column(nullable = false)
-    private String title;
+    private String plantitle;
 
     @Schema(description = "해야하는 날짜", example = "2024-01-01")
     @Column(nullable = false)
@@ -50,11 +50,11 @@ public class Plan {
         this.isCompleted = !this.isCompleted;
     }//토글 변경 method
 
-    public void update(LocalDate doDate, LocalTime startTime, LocalTime endTime, String title) {
+    public void update(LocalDate doDate, LocalTime startTime, LocalTime endTime, String plantitle) {
         this.doDate = doDate;
         this.startTime = startTime;
         this.endTime = endTime;
-        this.title = title;
+        this.plantitle = plantitle;
     }//update
 
 }

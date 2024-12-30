@@ -30,7 +30,7 @@ public class PlanService {
 
         Plan plan = Plan.builder()
                 .user(user)
-                .title(req.getTitle())
+                .plantitle(req.getPlantitle())
                 .doDate(req.getDoDate())
                 .build();
         planRepo.save(plan);
@@ -44,7 +44,7 @@ public class PlanService {
 
         Plan plan = Plan.builder()
                 .user(user)
-                .title(req.getTitle())
+                .plantitle(req.getPlantitle())
                 .doDate(req.getDoDate())
                 .startTime(req.getStartTime())
                 .endTime(req.getEndTime())

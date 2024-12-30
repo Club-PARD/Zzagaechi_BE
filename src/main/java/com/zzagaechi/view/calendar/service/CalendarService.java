@@ -25,7 +25,7 @@ public class CalendarService {
 
         // 해당 월의 Plan 목록 조회 및 DTO 변환
         List<CalendarResponse.CalendarPlanDto> plans = planRepository
-                .findAllByUser_UidAndDoDateBetweenOrderByDoDateDesc(
+                .findAllByUser_UidAndDoDateBetweenOrderByDoDateAsc(
                         userid,
                         startDate,
                         endDate

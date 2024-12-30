@@ -40,7 +40,7 @@ public class CalendarResponse {
         public static CalendarPlanDto from(Plan plan) {
             return CalendarPlanDto.builder()
                     .planId(plan.getPlanId())
-                    .plantitle(plan.getTitle())
+                    .plantitle(plan.getPlantitle())
                     .doDate(plan.getDoDate())
                     .build();
         }

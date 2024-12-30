@@ -12,7 +12,7 @@ import java.time.LocalTime;
 @Builder
 public class DateFindResponse {
     private int planId;
-    private String title;
+    private String plantitle;
     private LocalTime startTime;
     private LocalTime endTime;
     private boolean isCompleted;
@@ -21,7 +21,7 @@ public class DateFindResponse {
     public static DateFindResponse from(Plan plan) {
         return DateFindResponse.builder()
                 .planId(plan.getPlanId())
-                .title(plan.getTitle())
+                .plantitle(plan.getPlantitle())
                 .startTime(plan.getStartTime())
                 .endTime(plan.getEndTime())
                 .isCompleted(plan.isCompleted())

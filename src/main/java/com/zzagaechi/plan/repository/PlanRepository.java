@@ -19,7 +19,7 @@ public interface PlanRepository extends JpaRepository<Plan, Integer> {
     List<Plan> findAllByUser_UidAndDoDateAndStartTimeIsNull(String uid, LocalDate date);
 
 
-    List<Plan> findAllByUser_UidAndDoDateBetweenOrderByDoDateDesc(
+    List<Plan> findAllByUser_UidAndDoDateBetweenOrderByDoDateAsc(
             String uid,
             LocalDate startOfMonth,
             LocalDate endOfMonth

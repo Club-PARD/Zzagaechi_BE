@@ -13,14 +13,14 @@ import java.util.List;
 @Schema(description = "PlanSub에 속한 세부 작업 목록 응답")
 public class PlanSubDetailsByPlanSubResponse {
     @Schema(description = "PlanSub 제목")
-    private String title;
+    private String plansubtitle;
 
     @Schema(description = "세부 작업 목록")
     private List<PlanSubDetailListResponse> details;
 
     public static PlanSubDetailsByPlanSubResponse of(PlanSub planSub, List<PlanSubDetail> details) {
         return PlanSubDetailsByPlanSubResponse.builder()
-                .title(planSub.getPlansubtitle())
+                .plansubtitle(planSub.getPlansubtitle())
                 .details(details.stream()
                         .map(PlanSubDetailListResponse::from)
                         .toList())

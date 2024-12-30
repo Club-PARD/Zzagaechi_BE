@@ -17,7 +17,7 @@ public class PlanCreateReq {
     public static class DateTimeDto {
         @Schema(description = "일정명", example = "프로젝트 미팅")
         @NotBlank(message = "일정명은 필수입니다")
-        private String title;
+        private String plantitle;
 
         @Schema(description = "해야하는 날짜", example = "2024-01-01")
         @NotNull(message = "날짜는 필수입니다")
@@ -38,7 +38,7 @@ public class PlanCreateReq {
     public static class DateDto {
         @Schema(description = "일정명", example = "마트가기")
         @NotBlank(message = "일정명은 필수입니다")
-        private String title;
+        private String plantitle;
 
         @Schema(description = "해야하는 날짜", example = "2024-01-01")
         @NotNull(message = "날짜는 필수입니다")
