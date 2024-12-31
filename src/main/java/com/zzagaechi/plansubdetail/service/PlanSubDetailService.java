@@ -2,6 +2,7 @@ package com.zzagaechi.plansubdetail.service;
 
 import com.zzagaechi.plansubdetail.dto.request.PlanSubDetailListeRequest;
 import com.zzagaechi.plansubdetail.dto.request.UpdateRequest;
+import com.zzagaechi.plansubdetail.dto.response.PlanSubDetailCreateResponse;
 import com.zzagaechi.plansubdetail.dto.response.PlanSubDetailListResponse;
 import com.zzagaechi.plansubdetail.dto.response.PlanSubDetailsByPlanSubResponse;
 import com.zzagaechi.plansubdetail.entity.PlanSubDetail;
@@ -23,11 +24,16 @@ public class PlanSubDetailService {
     private final PlanSubRepository planSubRepository;
 
     @Transactional
-    public void createDetails(int planSubId, PlanSubDetailListeRequest request) {
+    public PlanSubDetailCreateResponse createDetails(String userId, int planSubId, PlanSubDetailListeRequest request) {
         PlanSub planSub = planSubRepository.findById(planSubId)
                 .orElseThrow(() -> new RuntimeException("PlanSub not found"));
-            
-        List<PlanSubDetail> details = request.getDetails().stream()
+
+        // 권한 검증: 해당 PlanSub가 요청한 사용자의 것인지 확인
+        if (!planSub.getUser().getUid().equals(userId)) {
+            throw new RuntimeException("Unauthorized access");
+        }
+
+        List<PlanSubDetail> savedDetails = request.getDetails().stream()
                 .map(detail -> PlanSubDetail.builder()
                         .planSub(planSub)
                         .content(detail.getContent())
@@ -36,9 +42,24 @@ public class PlanSubDetailService {
                         .endTime(detail.getEndTime())
                         .isCompleted(false)
                         .build())
-                        .toList();
-        planSubDetailRepository.saveAll(details);
-    } //plansubdetail 저장
+                .map(detail -> planSubDetailRepository.save(detail))
+                .toList();
+
+        List<PlanSubDetailCreateResponse.DetailResponse> detailResponses = savedDetails.stream()
+                .map(detail -> PlanSubDetailCreateResponse.DetailResponse.builder()
+                        .detailId(detail.getId())
+                        .content(detail.getContent())
+                        .date(detail.getDate())
+                        .startTime(detail.getStartTime())
+                        .endTime(detail.getEndTime())
+                        .build())
+                .toList();
+
+        return PlanSubDetailCreateResponse.builder()
+                .plansubId(planSubId)
+                .details(detailResponses)
+                .build();
+    }
 
 
     @Transactional(readOnly = true)//오늘 할일 리스트
@@ -50,11 +71,16 @@ public class PlanSubDetailService {
     }
 
 
-    //삭제하기
     @Transactional
-    public void deleteDetail(int id) {
-        PlanSubDetail detail = planSubDetailRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("PlanSubDetail not found with id: " + id));
+    public void deleteDetail(String userId, int detailId) {
+        PlanSubDetail detail = planSubDetailRepository.findById(detailId)
+                .orElseThrow(() -> new IllegalArgumentException("PlanSubDetail not found with id: " + detailId));
+
+        // 권한 체크: 해당 유저의 세부일정인지 확인
+        if (!detail.getPlanSub().getUser().getUid().equals(userId)) {
+            throw new RuntimeException("Unauthorized access");
+        }
+
         planSubDetailRepository.delete(detail);
     }
 

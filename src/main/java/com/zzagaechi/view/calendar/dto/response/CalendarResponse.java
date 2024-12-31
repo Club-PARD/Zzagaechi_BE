@@ -53,7 +53,7 @@ public class CalendarResponse {
     @Builder
     public static class CalendarPlanSubDto {
         @Schema(description = "세부 일정 ID")
-        private int id;
+        private int plansubId;
 
         @Schema(description = "세부 일정 제목")
         private String plansubtitle;
@@ -69,7 +69,7 @@ public class CalendarResponse {
 
         public static CalendarPlanSubDto from(PlanSub planSub) {
             return CalendarPlanSubDto.builder()
-                    .id(planSub.getId())
+                    .plansubId(planSub.getId())
                     .plansubtitle(planSub.getPlansubtitle())
                     .startDate(planSub.getStartDate())
                     .endDate(planSub.getEndDate())

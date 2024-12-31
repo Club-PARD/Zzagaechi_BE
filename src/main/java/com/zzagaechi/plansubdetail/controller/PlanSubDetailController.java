@@ -3,6 +3,7 @@ package com.zzagaechi.plansubdetail.controller;
 import com.zzagaechi.plansubdetail.dto.request.PlanSubDetailListeRequest;
 import com.zzagaechi.plansubdetail.dto.request.ToggleListRequest;
 import com.zzagaechi.plansubdetail.dto.request.UpdateRequest;
+import com.zzagaechi.plansubdetail.dto.response.PlanSubDetailCreateResponse;
 import com.zzagaechi.plansubdetail.dto.response.PlanSubDetailsByPlanSubResponse;
 import com.zzagaechi.plansubdetail.service.PlanSubDetailService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -22,22 +23,27 @@ public class PlanSubDetailController {
     @Operation(
             summary = "세부 작업 상세 일괄 생성",
             description = "여러 개의 세부 작업 상세를 한 번에 생성합니다.")
-    @PostMapping("/{planSubId}")
-    public ResponseEntity<Void> createDetails(
+    @PostMapping("/{userId}/{planSubId}")
+    public ResponseEntity<PlanSubDetailCreateResponse> createDetails(
+            @PathVariable String userId,
             @PathVariable int planSubId,
-            @Valid @org.springframework.web.bind.annotation.RequestBody PlanSubDetailListeRequest request) {
-        planSubDetailService.createDetails(planSubId, request);
-        return ResponseEntity.status(201).build();
+            @Valid @RequestBody PlanSubDetailListeRequest request) {
+        return ResponseEntity
+                .status(201)
+                .body(planSubDetailService.createDetails(userId, planSubId, request));
     }
 
     @Operation(summary = "세부 작업 상세 삭제")
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteDetail(@PathVariable int id) {
-        planSubDetailService.deleteDetail(id);
+    @DeleteMapping("/{userId}/{detailId}")
+    public ResponseEntity<Void> deleteDetail(
+            @PathVariable String userId,
+            @PathVariable int detailId) {
+        planSubDetailService.deleteDetail(userId, detailId);
         return ResponseEntity.ok().build();
     }
 
-    @Operation(summary = "세부 작업 상세 완료 여부 일괄 토글")
+
+    /*@Operation(summary = "세부 작업 상세 완료 여부 일괄 토글")
     @PatchMapping("/{userId}/toggle")
     public ResponseEntity<Void> toggleCompleteList(
             @PathVariable String userId,
@@ -45,6 +51,7 @@ public class PlanSubDetailController {
         planSubDetailService.toggleCompleteList(userId, request.getDetailIds());
         return ResponseEntity.ok().build();
     }
+*/
 
     @Operation(summary = "내용수정", description = "세부 작업내용을 수정합니다.")
     @PatchMapping("/{userId}/{detailId}")
