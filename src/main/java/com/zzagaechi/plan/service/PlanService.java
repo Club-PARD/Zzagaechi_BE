@@ -59,16 +59,26 @@ public class PlanService {
         return plan.getPlanId();
     }//plan 날짜와 시간이 같이 들어왔을 떄
 
-    @Transactional
-    public void deletePlan(String userId, int planId) {//Id로 삭제 cascade
-        User user = userRepo.findById(userId)
-                .orElseThrow(() -> new IllegalArgumentException("User not found with id: " + userId));
 
+
+    @Transactional
+    public void deletePlan(String userId, int planId) {
+        // 1. Plan 조회
         Plan plan = planRepo.findById(planId)
                 .orElseThrow(() -> new IllegalArgumentException("Plan not found with id: " + planId));
 
+        // 2. 권한 체크 추가
+        if (!plan.getUser().getUid().equals(userId)) {
+            throw new RuntimeException("Unauthorized access: This plan belongs to another user");
+        }
+
+        // 3. 관련된 plan_date_toggle 데이터 삭제
+        planDateToggleRepository.deleteAllByPlan_PlanId(planId);
+
+        // 4. plan 삭제
         planRepo.delete(plan);
     }
+
 
 
     @Transactional(readOnly = true)//daily에서 사용

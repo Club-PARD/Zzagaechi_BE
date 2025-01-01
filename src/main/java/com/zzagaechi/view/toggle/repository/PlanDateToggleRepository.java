@@ -15,4 +15,7 @@ public interface PlanDateToggleRepository extends JpaRepository<PlanDateToggle, 
     // 특정 일정들의 특정 날짜 완료 상태 조회
     //여러 일정의 완료 상태를 한 번에 조회할 때 사용 (예: 일별 보기에서 모든 일정의 상태 확인)
     List<PlanDateToggle> findAllByPlan_PlanIdInAndDate(List<Integer> planIds, LocalDate date);
+
+    void deleteAllByPlan_PlanId(int planId);
 }
+

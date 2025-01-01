@@ -1,5 +1,6 @@
 package com.zzagaechi.plan.entity;
 
+import com.zzagaechi.view.toggle.entity.PlanDateToggle;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.Builder;
@@ -8,6 +9,8 @@ import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
+
 import com.zzagaechi.user.entity.User;
 
 @Schema(description = "일정 엔티티 - 세분화 OFF")
@@ -51,6 +54,9 @@ public class Plan {
     public void toggleComplete() {
         this.isCompleted = !this.isCompleted;
     }//토글 변경 method
+
+    @OneToMany(mappedBy = "plan", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<PlanDateToggle> planDateToggles;
 
     public void update(LocalDate startDate, LocalDate endDate, LocalTime startTime,  String plantitle) {
         this.startDate = startDate;
