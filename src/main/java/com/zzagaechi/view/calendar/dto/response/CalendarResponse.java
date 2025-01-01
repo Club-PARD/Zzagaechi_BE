@@ -38,12 +38,16 @@ public class CalendarResponse {
         @Schema(description = "종료날짜")
         private LocalDate endDate;
 
+        @Schema(description = "시작시간")
+        private LocalTime startTime;
+
         public static CalendarPlanDto from(Plan plan) {
             return CalendarPlanDto.builder()
                     .planId(plan.getPlanId())
                     .plantitle(plan.getPlantitle())
                     .startDate(plan.getStartDate())
                     .endDate(plan.getEndDate())
+                    .startTime(plan.getStartTime())
                     .build();
         }
     }
