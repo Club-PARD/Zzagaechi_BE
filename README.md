@@ -204,7 +204,7 @@
 
 # 🗃️ System Design and Documentation
 ### ERD 
-![image](https://github.com/user-attachments/assets/bd602cb3-49e9-4001-a42e-6c8e7ecbfe84)
+![image](https://github.com/user-attachments/assets/4f150ebb-c6ce-4a8a-93a1-8d3a26ea3fd4)
 
 
 ### API
