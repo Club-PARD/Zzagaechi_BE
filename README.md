@@ -199,6 +199,21 @@
 
 <br />
 
+--------
+
+
+# 🗃️ System Design and Documentation
+### ERD 
+![image](https://github.com/user-attachments/assets/bd602cb3-49e9-4001-a42e-6c8e7ecbfe84)
+
+
+### API
+[API 명세서](https://sun-armchair-4a6.notion.site/nanoplan-API-16bf93bd044380a5a55be965cad7de54?pvs=4)
+
+### 서버 주소
+[서버 주소](https://nanoplan.store/swagger-ui/index.html)
+
+
 -------
 
 # ★ 핵심 기능 설명
