@@ -69,14 +69,15 @@
 <br>
 🌕Backend
 
-> Language : JavaScript<br>
-> Library & Framework : React<br>
-> Styled-Components, Axios, Recoil  <br>
-> Deploy: Firebase
+> Language : Java<br>
+> Library & Framework : Spring Boot<br>
+> Database: MySQL <br>
+> Deploy: AWS(EC2, Route 53) <br>
+> Documentation: Swagger
 
 <br>
 
-- [🙋‍♂️ 민규's server](https://github.com/Club-PARD/Zzagaechi_BE)
+- [🙋‍♂️ Frontend_README.md](https://github.com/Club-PARD/Zzagaechi_FE)
 
 
 <br>
@@ -111,27 +112,28 @@
 
 <img src="https://github.com/user-attachments/assets/b5333820-b033-489e-8cb8-7b455f272241" height="400" />
 
-앱을 실행할 때 나오는 스플래시 화면
+
+스플래시 화면
 
 </td>
 <td align="center">
 
-<img src="https://github.com/user-attachments/assets/b5333820-b033-489e-8cb8-7b455f272241" height="400" />
+<img src="https://github.com/user-attachments/assets/0d35b5d3-0098-48f7-817f-309f3adfa427" height="400" />
 
 메인 화면
 
 </td>
 <td align="center">
 
-<img src="https://github.com/user-attachments/assets/b5333820-b033-489e-8cb8-7b455f272241" height="400" />
+<img src="https://github.com/user-attachments/assets/878c22c9-3da3-40dc-96e6-e4cf47ffbeed" height="400" />
 
 
-간단한 일인지 세분화가 필요한 일인지 선택할 수 있게 해줌  
+일정 선택 화면  
 
 </td>
 <td align="center">
 
-<img src="https://github.com/user-attachments/assets/b5333820-b033-489e-8cb8-7b455f272241" height="400" />
+<img src="https://github.com/user-attachments/assets/17e6dd70-eda8-4f3e-9f03-97a56b9dd838" height="400" />
 
 
 등록된 일정을 보는 캘린더 
@@ -148,12 +150,12 @@
 
 </td>
 <td align="center">
-    
-<img src="https://github.com/user-attachments/assets/b5333820-b033-489e-8cb8-7b455f272241" height="400" />
-<img src="https://github.com/user-attachments/assets/b5333820-b033-489e-8cb8-7b455f272241" height="400" />
-<img src="https://github.com/user-attachments/assets/b5333820-b033-489e-8cb8-7b455f272241" height="400" />
-<img src="https://github.com/user-attachments/assets/b5333820-b033-489e-8cb8-7b455f272241" height="400" />
-<img src="https://github.com/user-attachments/assets/b5333820-b033-489e-8cb8-7b455f272241" height="400" />
+
+<img src="https://github.com/user-attachments/assets/475dc601-9bde-4ea1-9693-608ced292144" height="400" />
+<img src="https://github.com/user-attachments/assets/c7f2d034-7607-43ea-895c-a38c1d9eded4" height="400" />
+<img src="https://github.com/user-attachments/assets/af9c2b0d-7f59-490b-80e1-aa8a8b143fbe" height="400" />
+<img src="https://github.com/user-attachments/assets/1a07a67c-3473-44a6-bbf7-65156ea8c0ff" height="400" />
+<img src="https://github.com/user-attachments/assets/f79bacbb-d5e1-4519-ae0b-667bcfccae8f" height="400" />
 
 세분화를 해야하는 일정 등록하는 방법 
 
@@ -171,18 +173,19 @@
 <tr>
 <td align="center">
 
-<img src="https://github.com/user-attachments/assets/b5333820-b033-489e-8cb8-7b455f272241" height="400" />
+<img src="https://github.com/user-attachments/assets/974c5f06-fc66-4544-8844-26e3015e019d" height="400" />
 
 세분화 하지 않는 간단한 일정 
 
 </td>
 <td align="center">
 
-<img src="https://github.com/user-attachments/assets/b5333820-b033-489e-8cb8-7b455f272241" height="400" />
-<img src="https://github.com/user-attachments/assets/b5333820-b033-489e-8cb8-7b455f272241" height="400" />
+<img src="https://github.com/user-attachments/assets/79275ffc-df43-450c-b5ce-78277bad40ab" height="400" />
+<img src="https://github.com/user-attachments/assets/81b36ae3-d59e-497d-87de-c94f3ea659e4" height="400" />
 <img src="https://github.com/user-attachments/assets/b5333820-b033-489e-8cb8-7b455f272241" height="400" />
 
 동기부여를 줄 수 있는 모달창 
+
 
 </td>
 
