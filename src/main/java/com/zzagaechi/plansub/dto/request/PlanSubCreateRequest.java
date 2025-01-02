@@ -21,7 +21,6 @@ public class PlanSubCreateRequest {
         private String plansubtitle;
 
         @Schema(description = "시작 날짜", example = "2024-01-01")
-        @NotNull
         private LocalDate startDate;
 
         @Schema(description = "종료날짜", example = "2024-01-03")
@@ -43,7 +42,6 @@ public class PlanSubCreateRequest {
         private String plansubtitle;
 
         @Schema(description = "시작 날짜", example = "2024-01-01")
-        @NotNull
         private LocalDate startDate;
 
         @Schema(description = "종료날짜", example = "2024-01-31")

@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -21,10 +23,13 @@ public class PlanSubService {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
+        LocalDate startDate = dto.getStartDate() != null ?
+                dto.getStartDate() : LocalDate.now();
+
         PlanSub planSub = PlanSub.builder()
                 .user(user)
                 .plansubtitle(dto.getPlansubtitle())
-                .startDate(dto.getStartDate())
+                .startDate(startDate)
                 .endDate(dto.getEndDate())
                 .deadline(dto.getDeadline())
                 .isCompleted(false)
@@ -38,10 +43,13 @@ public class PlanSubService {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
+        LocalDate startDate = dto.getStartDate() != null ?
+                dto.getStartDate() : LocalDate.now();
+
         PlanSub planSub = PlanSub.builder()
                 .user(user)
                 .plansubtitle(dto.getPlansubtitle())
-                .startDate(dto.getStartDate())
+                .startDate(startDate)
                 .endDate(dto.getEndDate())
                 .isCompleted(false)
                 .build();
