@@ -158,6 +158,10 @@
 
 -------
 
+# ★ API 명세
+https://sun-armchair-4a6.notion.site/nanoplan-API-16bf93bd044380a5a55be965cad7de54?pvs=4
+-------
+
 # ★ 핵심 기능 설명
 
 1. **메인 페이지**
