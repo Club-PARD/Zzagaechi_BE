@@ -66,6 +66,14 @@
 
 - [🙋🏼‍♂️ nano plan's BE](https://github.com/Club-PARD/Zzagaechi_BE)
 
+
+>Language : Java    
+>Library & Framework : Spring Boot    
+>Database : MySQL    
+>ORM : JPA     
+>Deploy: AWS EC2, AWS Route 53
+
+
 <br>
 
 
