@@ -205,8 +205,8 @@
 
 # 🗃️ System Design and Documentation
 ### ERD 
-![image]()
-<img src="https://github.com/user-attachments/assets/7acdbcff-d05f-4b4b-8bcd-9493100c72d9.png  width="200" height="400"/>
+<img src="https://github.com/user-attachments/assets/7acdbcff-d05f-4b4b-8bcd-9493100c72d9.png" width="200" height="400"/>
+
 
 
 
@@ -214,7 +214,6 @@
 ### API
 [☘️nanoplan API 명세서](https://sun-armchair-4a6.notion.site/nanoplan-API-16bf93bd044380a5a55be965cad7de54?pvs=4)
 
--------
 
 
 
