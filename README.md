@@ -205,7 +205,9 @@
 
 # 🗃️ System Design and Documentation
 ### ERD 
-![image](https://github.com/user-attachments/assets/7acdbcff-d05f-4b4b-8bcd-9493100c72d9)
+![image]()
+<img src="https://github.com/user-attachments/assets/7acdbcff-d05f-4b4b-8bcd-9493100c72d9.png  width="200" height="400"/>
+
 
 
 
