@@ -19,7 +19,7 @@ public class PlanSubService {
     private final UserRepo userRepository;
 
     @Transactional
-    public int createPlanSub( String userId, PlanSubCreateRequest.CreateTimeDto dto) {
+    public int createPlanSub(String userId, PlanSubCreateRequest.CreateTimeDto dto) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
@@ -73,11 +73,6 @@ public class PlanSubService {
         // 연관된 PlanSubDetail들도 자동으로 삭제됩니다
         planSubRepository.delete(planSub);
     }
-
-
-
-
-
 
 
 }

@@ -1,0 +1,19 @@
+version: "3.3"
+
+services:
+  web:
+    image: ghcr.io/Club-PARD/Zzagaechi_BE/main:latest
+    container_name: pard
+    environment:
+      TZ: "Asia/Seoul"
+    networks:
+      - bridge
+    ports:
+      - "8080:8080"
+
+volumes:
+  web-server:
+
+networks:
+  bridge:
+    driver: bridge
