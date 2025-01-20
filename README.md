@@ -3,7 +3,7 @@
     <img src="https://readme-typing-svg.demolab.com?font=Poppins&size=40&duration=3000&pause=2300&color=6BA1FF&center=true&random=false&height=80&lines=nanoplan" alt="Typing SVG" />
   </a>
 
-# nanoplan_iOS
+# nanoplan_BE
 
 <br>
 <br>
@@ -15,12 +15,11 @@
 # 📓 nanoplan (나노플랜)
 
 <div align="left"> 
-*￼😀서비스 한 줄 설명: 해야 할 일정들을 작게 나눠 실천으로 이끄는 앱서비스😀*
+* 😀서비스 한 줄 설명: 해야 할 일정들을 작게 나눠 실천으로 만들어내는 앱 서비스😀*
 
 디테일 설명: 하 또 실천하지 못했어 미치겠네?
 
-계획을 세우지만, 
-해야할 일을 자꾸 미루고 실천하지 못하는 대학생을 위해 해야할 일에 세분화 하는 과정을 통해 진입 장벽을 낮추고 실행율을 높여 계획을 성공해보자고요!
+계획은 세우지만 실천이 어려운 대학생들을 위해, 해야 할 일을 세분화하여 진입 장벽을 낮추고 실행 가능성을 높이는 과정을 통해 계획을 성공적으로 완수해봅시다!
 
 
 <br>
@@ -30,17 +29,17 @@
 
 ### 문제
 
-**계획을** **세웠지만**, 시작이 안 해서 미루는 사람, 어디서 부터 손을 대야 할지 몰라 막막해지는 상황으로 작은 실천으로 계획을 실행할 수 있게 도와준다. 
+**계획을** **세웠지만** 시작조차 못 하고 미루는 사람들, 또는 어디서부터 손을 대야 할지 몰라 막막해하는 이들을 위해, 작은 실천으로 계획을 실행할 수 있도록 돕습니다.
 
 ### 솔루션
 
-1. 사용자가 만든 일정을 오늘날로 일정을 보여줌  
+1. 사용자가 작성한 일정을 오늘 날짜 기준으로 확인할 수 있도록 표시합니다.  
 
-2. 사용자가 해야 할 일을 세부적인 단계로 나눌 수 있도록 도와줌 (세분화 기능) -> 진입장벽을 낮춤 
+2. 사용자가 해야 할 일을 세부적인 단계로 나눌 수 있도록 도와주는 **세분화 기능**을 통해 진입 장벽을 낮춥니다.  
 
-3. 사용자가 설정한 마감 기한을 정할 수 있음 
+3. 사용자가 원하는 마감 기한을 직접 설정할 수 있습니다.  
 
-4. 단계적으로 완료한 작업에 대해 체크 하는 기능으로써 성취감을 제공하고, 목표 달성까지의 진행 상황을 시각적으로 보여줌으로 동기 부여.
+4. 단계적으로 완료한 작업을 체크할 수 있는 기능을 제공하여 성취감을 느낄 수 있도록 하고, 목표 달성까지의 진행 상황을 시각적으로 보여줌으로써 동기를 부여합니다.
 
 <br>
 <br>
@@ -49,41 +48,48 @@
 ***
 |                                                🪽 김민준                                                 |                          😎 최준영                           |                          ❣️ 김사랑                           |                         🍞 김민규                            |
 |:-----------------------------------------------------------------------------------------------------:|:---------------------------------------------------------:|:---------------------------------------------------------:|:---------------------------------------------------------:|
-|                                                  Frontend                                                   |                            Frontend                             |                           Frontend                            |                            Backend                            |
-|  <img src="https://github.com/user-attachments/assets/4303940d-1e88-48f5-930b-22cfeb5246a1" style="width: 150px; height: 150px; object-fit: cover;">  |  <img src="https://github.com/user-attachments/assets/3080eab6-46f4-4f3d-96ae-c1abb6330c7d" style="width: 150px; height: 150px; object-fit: cover;">   | <img src="https://github.com/user-attachments/assets/89013085-a1ad-4969-8328-ef7617585873" style="width: 150px; height: 150px; object-fit: cover;">  |  <img src="https://github.com/user-attachments/assets/a8e911c6-1cf8-44fe-ad2c-167e8daf4021" style="width: 150px; height: 150px; object-fit: cover;">  |
+|                                                  iOS Developer                                                  |                            iOS Developer                              |                          iOS Developer                            |                            Back-end                            |
+|  <img src="https://github.com/user-attachments/assets/4303940d-1e88-48f5-930b-22cfeb5246a1" style="width: 150px; height: 150px; object-fit: cover;">  |  <img src="https://github.com/user-attachments/assets/f849fd8b-c5d8-45b8-9f2d-e19abf4f9e01" style="width: 150px; height: 150px; object-fit: cover;">   | <img src="https://github.com/user-attachments/assets/89013085-a1ad-4969-8328-ef7617585873" style="width: 150px; height: 150px; object-fit: cover;">  |  <img src="https://github.com/user-attachments/assets/a8e911c6-1cf8-44fe-ad2c-167e8daf4021" style="width: 150px; height: 150px; object-fit: cover;">  |
 |                                                🐻‍❄️ 최수원                                                 |                          🐰 이채정                           |                          🐱 이서현                           |                          🐹 nanoplan                           |
 |                                                  PM                                                  |                           Designer                           |                           Designer                           |                           NANO                           |
 | <img src="https://github.com/user-attachments/assets/81ba93dd-c874-49e7-9bc5-99684922fe83" style="width: 150px; height: 150px; object-fit: cover;">| <img src="https://github.com/user-attachments/assets/fba74226-5005-498e-a487-95f6dc1e26d1" style="width: 150px; height: 150px; object-fit: cover;"> | <img src="https://github.com/user-attachments/assets/abeb52ba-c496-43e9-aecb-6459057d7253" style="width: 150px; height: 150px; object-fit: cover;"> | <img src="https://github.com/user-attachments/assets/23bb9b2a-879b-4e9d-8c51-1784df9fa7af" style="width: 150px; height: 150px; object-fit: cover;"> |
 
 <br><be>
 
- Stack
+ Deployment Link
 ---
 ☀️Frontend
-
-> Language : Swift<br>
-> Library & Framework : Alamofire, FSCalendar<br>
-> Styled-Components, Axios, Recoil  <br>
-> Deploy: Firebase<br>
+ - [🙋🏻‍♀️ nano plan's FE](https://github.com/Club-PARD/Zzagaechi_FE.git)
 
 <br>
 🌕Backend
 
-> Language : Java<br>
-> Library & Framework : Spring Boot<br>
-> Database: MySQL <br>
-> Deploy: AWS(EC2, Route 53) <br>
-> Documentation: Swagger
+- [🙋🏼‍♂️ nano plan's BE](https://github.com/Club-PARD/Zzagaechi_BE)
 
-<br>
 
-- [🙋‍♂️ Frontend_README.md](https://github.com/Club-PARD/Zzagaechi_FE)
 
 
 <br>
-<br>
+
+
+
+
 <div align="left"> 
-** 개발환경 및 언어 **  <br>
+
+  
+**개발환경**
+
+>Language : Java    
+>Library & Framework : Spring Boot    
+>Database : MySQL    
+>ORM : JPA     
+>Deploy: AWS EC2, AWS Route 53
+
+
+<be>
+
+
+
 <img src="https://img.shields.io/badge/Swift-white?style=for-the-badge&logo=Swift&logoColor=FF971A">
 <div>
   <img src="https://img.shields.io/badge/Github-white?style=for-the-badge&logo=Github&logoColor=FF971A">
@@ -182,7 +188,7 @@
 
 <img src="https://github.com/user-attachments/assets/79275ffc-df43-450c-b5ce-78277bad40ab" height="400" />
 <img src="https://github.com/user-attachments/assets/81b36ae3-d59e-497d-87de-c94f3ea659e4" height="400" />
-<img src="https://github.com/user-attachments/assets/b5333820-b033-489e-8cb8-7b455f272241" height="400" />
+<img src="https://github.com/user-attachments/assets/b94daced-69c5-4631-b5d2-d655ddb1a6e6" height="400" />
 
 동기부여를 줄 수 있는 모달창 
 
@@ -193,6 +199,19 @@
 </td>
 </tr>
 </table>
+
+
+
+
+# 🗃️ System Design and Documentation
+### ERD 
+
+![image](https://github.com/user-attachments/assets/48495f2c-e8f5-4ee3-89ec-1e999bae5917)
+
+
+
+### API
+[☘️nanoplan API 명세서](https://sun-armchair-4a6.notion.site/nanoplan-API-16bf93bd044380a5a55be965cad7de54?pvs=4)
 
 
 
@@ -224,35 +243,29 @@
 
 4. **동기 부여 넣기**
 >    각각의 간단 일정, 세분화 한 일정을 등록을 완료하면 메인 화면으로 넘어가기전, 모달창이 나와 응원을 해줌 <br>
->    오늘의 일정을 다 완료하면 성공을 축하하는 모달창이 나와 축하해줌 
+>    오늘의 일정을 다 완료하면 성공을 축하하는 모달창이 나와 축하해줌
 
 <br>
-----------
+
 
 ## 로직 설명
 
-1. **일정 등록**:
-    - 일정 등록한 일정을, 메인 페이지, 캘린더를 통해서 확인을 할 수 있
+1. **메인화면**:
+    - 등록한 일정 중 오늘 날짜에 있는 일을 보여줍니다. 
 
-2. **후ㄹ정**:
-    - 사ㄹ
+2. **일정 등록**:
+    - 사용자가 세분화 해야하는 일인지, 간단하게 등록하는 일정인지 선택할 수 있게 해줍니다.
+    - 간단 일정의 경우 한 페이지에서 제목, 일정, 시간을 통해 일정을 등록할 수 있습니다. 
 
-3. **ㄹ**:
-    - ㄹ.
+3. **세부 일정 등록**:
+    - 제목, 일정, 시간 등록 세부화한 일정을 언제 할지, 각 일정의 시간을 넣어 세분화를 할 수 있게 도와줍니다. 
 
-4. **ㄹ**:
-    - ㄹ
+4. **동기 부여 화면**:
+    - 일정 등록을 하고난 다음과 일정을 다 실행했을 때, 동기부여를 제공할 수 있는 칭찬 모달을 넣었습니다. 
 
-5. **ㄹ**:
-    - ㄹ
+5. **캘린더**:
+    - 등록한 일정 한 눈에 볼 수 있게 도와줍니다. 
   
-     ##
------
 
-
-
-
-
------
 
 
